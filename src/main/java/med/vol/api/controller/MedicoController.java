@@ -12,8 +12,8 @@ import med.vol.api.medico.DadosCadastroMedico;
 public class MedicoController {
 	
 	@PostMapping
-	public void cadastrar(@RequestBody DadosCadastroMedico dados) {
-		System.out.println(dados);
+	public void cadastrar(@RequestBody DadosCadastroMedico dadosa) {
+		System.out.println(dadosa);
 	}
 
 }
