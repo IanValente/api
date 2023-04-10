@@ -1,4 +1,4 @@
-package med.vol.api.medicom;
+package med.vol.api.medico;
 
 import jakarta.validation.constraints.NotNull;
 import med.vol.api.endereco.DadosEndereco;

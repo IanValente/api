@@ -1,4 +1,4 @@
-package med.vol.api.medico;
+package med.vol.api.paciente;
 
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
@@ -8,21 +8,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.vol.api.endereco.Endereco;
 
-@Table(name = "medicos")
-@Entity(name = "Medico")
+@Table(name = "pacientes")
+@Entity(name = "Paciente")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Medico {
+public class Paciente {
 
-	public Medico(DadosCadastroMedico dados) {
+	public Paciente(DadosCadastroPaciente dados) {
 		this.ativo = true;
 		this.nome = dados.nome();
 		this.email = dados.email();
 		this.telefone = dados.telefone();
-		this.crm = dados.crm();
-		this.especialidade = dados.especialidade();
+		this.cpf = dados.cpf();
 		this.endereco = new Endereco(dados.endereco());
 	}
 
@@ -32,17 +31,14 @@ public class Medico {
 	private String nome;
 	private String email;
 	private String telefone;
-	private String crm;
-
-	@Enumerated(EnumType.STRING)
-	private Especialidade especialidade;
+	private String cpf;
 
 	@Embedded
 	private Endereco endereco;
-	
-	private Boolean ativo;
 
-	public void atualizarInformações(@Valid DadosAtualizacaoMedico dados) {
+	private boolean ativo;
+
+	public void atualizarInformações(@Valid DadosAtualizacaoPaciente dados) {
 		if (dados.nome() != null) {
 			this.nome = dados.nome();
 		}
